@@ -11,21 +11,12 @@ pipeline {
             steps {
                 sh 'echo passed'
             }
-            step {
-                script {
-                    // Check if the directory exists
-                    def dirExists = fileExists 'java-maven-sonar-argocd-helm-k8s/spring-boot-app'
-                    if (!dirExists) {
-                        error "Directory java-maven-sonar-argocd-helm-k8s/spring-boot-app does not exist."
-                    }
-                }
-             }
         }
 
         stage('Build and Test') {
             steps {
                 sh 'ls -ltr'
-                sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
+                sh 'cd Jen-Argocd/java-maven-sonar-argocd-helm-k8s/spring-boot-app/ && mvn clean package'
             }
         }
 
